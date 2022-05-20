@@ -1,3 +1,3 @@
 <template>
-    这是编辑器
+    兜底404
 </template>
