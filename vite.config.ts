@@ -1,8 +1,15 @@
 import path from "path";
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-// https://vitejs.dev/config/
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+
 export default defineConfig({
+  server: {
+    host: 'test.58corp.com',
+    port: 3001
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
@@ -16,5 +23,11 @@ export default defineConfig({
       "dirs": path.resolve(__dirname, "src/directives"),
     },
   },
-  plugins: [vue()]
+  plugins: [vue(),
+  AutoImport({
+    resolvers: [ElementPlusResolver()],
+  }),
+  Components({
+    resolvers: [ElementPlusResolver()],
+  }),]
 })
