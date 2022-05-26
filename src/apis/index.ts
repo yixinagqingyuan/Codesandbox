@@ -1,9 +1,8 @@
 import request from '@/utils/request'
 
-export function fetchList(query) {
+export function templatesOfficial() {
     return request({
-        url: '/vue-element-admin/article/list',
-        method: 'get',
-        params: query
+        url: '/api/v1/sandboxes/templates/official',
+        method: 'get'
     })
 }

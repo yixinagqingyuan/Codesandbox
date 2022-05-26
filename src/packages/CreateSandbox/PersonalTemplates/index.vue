@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="temp-container">
         这是真正的创建组件
     </div>
 </template>

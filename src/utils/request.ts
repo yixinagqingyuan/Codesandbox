@@ -1,11 +1,11 @@
 import axios from 'axios'
 const service = axios.create({
-    baseURL: 'https://idot.58corp.com',
+    baseURL: '',
     timeout: 5000
 })
 service.interceptors.request.use(
     config => {
-
+        return config
     },
     error => {
     }
@@ -13,6 +13,7 @@ service.interceptors.request.use(
 
 service.interceptors.response.use(
     response => {
+        return response.data
     },
     error => {
     }

@@ -7,8 +7,11 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineConfig({
   server: {
-    host: 'test.58corp.com',
-    port: 3001
+    // host: 'test.58corp.com',
+    port: 3001,
+    proxy: {
+      '/api': 'https://codesandbox.io/'
+    }
   },
   resolve: {
     alias: {

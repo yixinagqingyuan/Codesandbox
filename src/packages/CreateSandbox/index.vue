@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="Create-container">
         <Create></Create>
     </div>
 </template>
@@ -7,5 +7,4 @@
 import Create from './Create.vue'
 </script>
 <style lang="scss" scoped>
-
 </style>

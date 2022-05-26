@@ -1,5 +1,5 @@
 <template>
-    <div class="container" :style="{ lineHeight: 'initial', backgroundColor: 'transparent' }">
+    <div class="editor-container" :style="{ lineHeight: 'initial', backgroundColor: 'transparent' }">
         <Header></Header>
         <div class="fullscreen">
             <div class="editor">
@@ -31,7 +31,7 @@ defineProps({
 
 </script>
 <style lang="scss" scoped>
-.container {
+.editor-container {
     width: 100%;
     height: 100%;
     position: fixed;

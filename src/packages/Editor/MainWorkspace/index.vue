@@ -13,5 +13,5 @@
 import CodeEditor from 'components/VSCode/index.vue'
 import DevTools from 'components/DevTools/index.vue'
 </script>
-<style>
+<style lang="scss" scoped>
 </style>
