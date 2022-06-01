@@ -4,38 +4,32 @@
 <script setup lang="ts">
 //https://github.com/FE-Mars/monaco-editor-vue/blob/master/src/index.js
 import { onMounted, onBeforeUnmount, ref, computed } from 'vue'
-import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
-import 'monaco-editor/esm/vs/basic-languages/javascript/javascript.contribution'
+import * as monaco from 'monaco-editor';
+import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker'
+import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker'
+import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker'
+import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker'
+import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker'
+
 // @ts-ignore
 (window as any).MonacoEnvironment = {
-    getWorker: function (label) {
-        const getWorkerModule = (moduleUrl, label) => {
-            // @ts-ignore
-            return new Worker((window as any).MonacoEnvironment.getWorkerUrl(moduleUrl), {
-                name: label,
-                type: 'module'
-            });
-        };
-
-        switch (label) {
-            case 'json':
-                return getWorkerModule('/monaco-editor/esm/vs/language/json/json.worker?worker', label);
-            case 'css':
-            case 'scss':
-            case 'less':
-                return getWorkerModule('/monaco-editor/esm/vs/language/css/css.worker?worker', label);
-            case 'html':
-            case 'handlebars':
-            case 'razor':
-                return getWorkerModule('/monaco-editor/esm/vs/language/html/html.worker?worker', label);
-            case 'typescript':
-            case 'javascript':
-                return getWorkerModule('/monaco-editor/esm/vs/language/typescript/ts.worker?worker', label);
-            default:
-                return getWorkerModule('/monaco-editor/esm/vs/editor/editor.worker?worker', label);
+    getWorker(_, label) {
+        if (label === 'json') {
+            return new jsonWorker()
         }
+        if (label === 'css' || label === 'scss' || label === 'less') {
+            return new cssWorker()
+        }
+        if (label === 'html' || label === 'handlebars' || label === 'razor') {
+            return new htmlWorker()
+        }
+        if (label === 'typescript' || label === 'javascript') {
+            return new tsWorker()
+        }
+        return new editorWorker()
     }
 };
+
 interface Props {
     value?: string,
     language?: string,
@@ -63,8 +57,9 @@ function _getValue() {
     return editor.getValue();
 }
 function _emitChange(value, event) {
-    this.$emit('change', value, event);
-    this.$emit('input', value);
+    console.log(value, event)
+    // this.$emit('change', value, event);
+    // this.$emit('input', value);
 }
 function _setModel(value, original) {     //diff模式下设置model
     const originalModel = monaco.editor.createModel(original, props.language);
@@ -77,17 +72,10 @@ function _setModel(value, original) {     //diff模式下设置model
 
 function _editorMounted(editor) {
     props.editorMounted(editor, monaco);
-    if (props.diffEditor) {
-        editor.onDidUpdateDiff((event) => {
-            const value = _getValue();
-            _emitChange(value, event);
-        });
-    } else {
-        editor.onDidChangeModelContent(event => {
-            const value = _getValue();
-            _emitChange(value, event);
-        });
-    }
+    editor.onDidChangeModelContent(event => {
+        const value = _getValue();
+        _emitChange(value, event);
+    });
 }
 // 初始化
 function initMonaco() {
@@ -98,13 +86,12 @@ function initMonaco() {
         theme: props.theme,
         ...options
     });
-    props.diffEditor && _setModel(this.value, this.original);
     _editorMounted(editor);      //编辑器初始化后
 }
 
 function _getEditor() {
     if (!editor) return null;
-    return props.diffEditor ? editor.modifiedEditor : editor;
+    return editor;
 }
 
 

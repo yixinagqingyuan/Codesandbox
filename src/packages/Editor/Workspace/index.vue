@@ -1,12 +1,13 @@
 
 <template>
-    这是工作区目录
+    <Explorer :directories="currentSandbox.directories" :modules="currentSandbox.modules"></Explorer>
 </template>
 <script setup lang="ts">
-import Editor from 'packages/Editor/index.vue'
-defineProps({
-    showNewSandboxModal: Boolean
-})
+import { useStore } from 'vuex'
+import { computed } from 'vue'
+import Explorer from 'components/Explorer/index.vue'
+const store = useStore()
+const currentSandbox = computed(() => store.state.currentSandbox)
 </script>
 <style lang="scss" scoped>
 </style>

@@ -5,12 +5,15 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    Codemirror: typeof import('./src/components/Codemirror/index.vue')['default']
     DevTools: typeof import('./src/components/DevTools/index.vue')['default']
+    Dome: typeof import('./src/components/DevTools/dome.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCol: typeof import('element-plus/es')['ElCol']
     ElDialog: typeof import('element-plus/es')['ElDialog']
     ElPageHeader: typeof import('element-plus/es')['ElPageHeader']
     ElRow: typeof import('element-plus/es')['ElRow']
+    Explorer: typeof import('./src/components/Explorer/index.vue')['default']
     Header: typeof import('./src/components/header/index.vue')['default']
     MainWorkspace: typeof import('./src/components/MainWorkspace/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

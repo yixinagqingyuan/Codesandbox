@@ -1,15 +1,20 @@
 import { createStore } from 'vuex'
-
+import { data } from './dome'
+console.log(data)
 // 创建一个新的 store 实例
 export default createStore({
     state() {
         return {
-            count: 0
+            currentSandbox: data,
+            currentCode: {
+                title: '',
+                code: ''
+            }
         }
     },
     mutations: {
-        increment(state: any) {
-            state.count++
+        setCurrentCode(state: any, code) {
+            state.currentCode = code
         }
     }
 })

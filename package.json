@@ -8,13 +8,23 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@codemirror/basic-setup": "^0.20.0",
+    "@codemirror/lang-css": "^0.20.0",
+    "@codemirror/lang-html": "^0.20.0",
+    "@codemirror/lang-javascript": "^0.20.0",
+    "@codemirror/lang-json": "^0.20.0",
+    "@codemirror/lang-markdown": "^0.20.1",
+    "@codemirror/theme-one-dark": "^0.20.0",
     "axios": "^0.27.2",
+    "custom-sandpack-client": "^0.1.26",
     "element-plus": "^2.2.1",
     "monaco-editor": "^0.33.0",
     "normalize.css": "^8.0.1",
     "splitpanes": "^3.1.1",
     "vue": "^3.2.25",
+    "vue-codemirror": "^5.0.1",
     "vue-router": "^4.0.15",
+    "vuedraggable": "^4.1.0",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
