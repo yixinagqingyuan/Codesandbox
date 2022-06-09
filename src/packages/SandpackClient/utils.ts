@@ -88,7 +88,7 @@ export function addPackageJSONIfNeeded(
       code: JSON.stringify(packageJsonContent, null, 2),
     };
   }
-
+  console.log(newFiles)
   return newFiles;
 }
 

@@ -9,4 +9,9 @@ import 'element-plus/dist/index.css'
 import 'splitpanes/dist/splitpanes.css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
 import { Splitpanes, Pane } from 'splitpanes'
-createApp(App).use(router).use(store).use(ElementPlus).component('Splitpanes', Splitpanes).component('Pane', Pane).mount('#app')
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+const app = createApp(App).use(router).use(store).use(ElementPlus).component('Splitpanes', Splitpanes).component('Pane', Pane)
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+    app.component(key, component)
+}
+app.mount('#app')

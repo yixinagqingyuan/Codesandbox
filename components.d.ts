@@ -10,7 +10,10 @@ declare module '@vue/runtime-core' {
     Dome: typeof import('./src/components/DevTools/dome.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCol: typeof import('element-plus/es')['ElCol']
+    ElCollapse: typeof import('element-plus/es')['ElCollapse']
+    ElCollapseItem: typeof import('element-plus/es')['ElCollapseItem']
     ElDialog: typeof import('element-plus/es')['ElDialog']
+    ElIcon: typeof import('element-plus/es')['ElIcon']
     ElPageHeader: typeof import('element-plus/es')['ElPageHeader']
     ElRow: typeof import('element-plus/es')['ElRow']
     Explorer: typeof import('./src/components/Explorer/index.vue')['default']
@@ -21,6 +24,7 @@ declare module '@vue/runtime-core' {
     Test: typeof import('./src/components/test.vue')['default']
     Test1: typeof import('./src/components/test1.vue')['default']
     VSCode: typeof import('./src/components/VSCode/index.vue')['default']
+    VueTreeList: typeof import('./src/components/VueTreeList/VueTreeList.vue')['default']
     Workspace: typeof import('./src/components/Workspace/index.vue')['default']
   }
 }

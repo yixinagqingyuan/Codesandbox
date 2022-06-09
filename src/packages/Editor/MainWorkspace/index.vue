@@ -1,6 +1,6 @@
 
 <template>
-    <splitpanes class="default-theme">
+    <splitpanes>
         <pane min-size="30" size="50" max-size="70">
             <CodeEditor></CodeEditor>
         </pane>

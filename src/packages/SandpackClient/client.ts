@@ -163,7 +163,6 @@ export class SandpackClient {
       : this.bundlerURL;
 
     this.iframe.contentWindow?.location.replace(urlSource);
-    console.log(urlSource)
     this.iframeProtocol = new IFrameProtocol(this.iframe, this.bundlerURL);
 
     this.unsubscribeGlobalListener = this.iframeProtocol.globalListen(

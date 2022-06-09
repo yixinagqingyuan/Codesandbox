@@ -3,7 +3,7 @@
         <Header></Header>
         <div class="fullscreen">
             <div class="editor">
-                <splitpanes class="default-theme">
+                <splitpanes>
                     <pane min-size="10" size="15" max-size="25">
                         <Workspace></Workspace>
                     </pane>
